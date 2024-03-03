@@ -1,21 +1,27 @@
 {
-  "name": "sinmos-ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "tsnd src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/express": "^4.17.21",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "express": "^4.18.3"
-  }
+	"name": "sinmos-ts",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "tsnd src/server.ts",
+		"typeorm": "tsnd node_modules/typeorm/cli.js",
+		"prettier-format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' --config ./.prettierrc",
+		"migration:create": "cd ./src/database/migrations && tsnd ../../../node_modules/typeorm/cli.js migration:create",
+		"migraion:run": "npx typeorm-ts-node-commonjs migration:run  -d 'src/database/index.ts'"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"express": "^4.18.3",
+		"pg": "^8.11.3",
+		"prettier": "^3.2.5",
+		"typeorm": "^0.3.20"
+	}
 }
