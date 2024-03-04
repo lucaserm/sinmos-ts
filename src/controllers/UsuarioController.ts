@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { AppDataSource } from '../database';
-import UsuarioRepository from '../repositories/UsuarioRepository';
+
 import Usuario from '../models/Usuario';
+import { hash } from 'bcryptjs';
 
 class UsuarioController {
 	async create(request: Request, response: Response) {
@@ -9,7 +10,11 @@ class UsuarioController {
 
 		const { nome, senha, codigo, cargo } = request.body;
 
-		const existeUsuario = await usuarioRepository.findOneBy(codigo);
+		const existeUsuario = await usuarioRepository.findOne({
+			where: {
+				codigo,
+			},
+		});
 
 		if (existeUsuario) {
 			return response
@@ -17,14 +22,18 @@ class UsuarioController {
 				.json({ message: 'Código de usuário já cadastrado!' });
 		}
 
+		const senhaCriptografada = await hash(senha, 8);
+
 		const usuario = usuarioRepository.create({
 			nome,
-			senha,
+			senha: senhaCriptografada,
 			codigo,
 			cargo,
 		});
 
 		await usuarioRepository.save(usuario);
+
+		delete usuario.senha;
 
 		return response.status(201).json(usuario);
 	}

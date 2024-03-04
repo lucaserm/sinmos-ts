@@ -9,7 +9,7 @@ class Usuario {
 	nome: string;
 
 	@Column()
-	senha: string;
+	senha?: string;
 
 	@Column()
 	codigo: string;
