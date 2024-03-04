@@ -1,21 +1,17 @@
 import { DataSource } from 'typeorm';
 import Usuario from '../models/Usuario';
+import Permissao from '../models/Permissao';
+import Cargo from '../models/Cargo';
 
 export const AppDataSource = new DataSource({
 	type: 'postgres',
-	host: process.env.HOST,
-	port: Number.parseInt(process.env.PORT + ''),
-	username: process.env.USERNAME,
-	password: process.env.PASSWORD,
-	database: process.env.DATABASE,
-	entities: ['./../models/*.ts', Usuario],
-	synchronize: false,
+	host: 'localhost',
+	port: 5432,
+	username: 'postgres',
+	password: 'postgres',
+	database: 'sinmos',
+	entities: ['./../models/*.ts', Usuario, Permissao, Cargo],
+	synchronize: true,
 	logging: false,
-	migrations: ['./migrations/*.ts'],
+	migrations: ['./src/database/migrations/*.ts'],
 });
-
-AppDataSource.initialize()
-	.then(() => {
-		console.log('Conectado à base de dados.');
-	})
-	.catch((error) => console.log(error));

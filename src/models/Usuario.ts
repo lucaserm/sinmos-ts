@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+	Column,
+	Entity,
+	JoinTable,
+	ManyToMany,
+	PrimaryGeneratedColumn,
+} from 'typeorm';
+import Cargo from './Cargo';
 
 @Entity('Usuarios')
 class Usuario {
@@ -14,8 +21,13 @@ class Usuario {
 	@Column()
 	codigo: string;
 
-	@Column()
-	cargo: string;
+	@ManyToMany(() => Cargo)
+	@JoinTable({
+		name: 'UsuariosCargos',
+		joinColumns: [{ name: 'id_cargo' }],
+		inverseJoinColumns: [{ name: 'id_usuario' }],
+	})
+	cargos: Cargo[];
 }
 
 export default Usuario;

@@ -8,7 +8,7 @@
 		"typeorm": "tsnd node_modules/typeorm/cli.js",
 		"prettier-format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' --config ./.prettierrc",
 		"migration:create": "cd ./src/database/migrations && tsnd ../../../node_modules/typeorm/cli.js migration:create",
-		"migraion:run": "npx typeorm-ts-node-commonjs migration:run  -d 'src/database/index.ts'"
+		"migration:run": "npx typeorm-ts-node-commonjs migration:run -d ./src/database/index.ts"
 	},
 	"keywords": [],
 	"author": "",
