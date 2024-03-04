@@ -4,11 +4,11 @@ import Cargo from '../models/Cargo';
 import Permissao from '../models/Permissao';
 import { In } from 'typeorm';
 
+import { cargoRepository } from '../repositories/CargoRepository';
+import { permissaoRepository } from '../repositories/PermissaoRepository';
+
 class CargoController {
 	async create(request: Request, response: Response) {
-		const cargoRepository = AppDataSource.getRepository(Cargo);
-		const permissaoRepository = AppDataSource.getRepository(Permissao);
-
 		const { nome, descricao, permissoes } = request.body;
 
 		const existeCargo = await cargoRepository.findOne({

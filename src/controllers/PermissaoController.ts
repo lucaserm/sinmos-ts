@@ -2,9 +2,10 @@ import { Request, Response } from 'express';
 import { AppDataSource } from '../database';
 import Permissao from '../models/Permissao';
 
+import { permissaoRepository } from '../repositories/PermissaoRepository';
+
 class PermissaoController {
 	async create(request: Request, response: Response) {
-		const permissaoRepository = AppDataSource.getRepository(Permissao);
 		const { nome, descricao } = request.body;
 
 		const existePermissao = await permissaoRepository.findOne({

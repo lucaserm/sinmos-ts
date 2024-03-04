@@ -1,6 +1,4 @@
-import { Repository } from 'typeorm';
+import { AppDataSource } from '../database';
 import Usuario from '../models/Usuario';
 
-class UsuarioRepository extends Repository<Usuario> {}
-
-export default UsuarioRepository;
+export const usuarioRepository = AppDataSource.getRepository(Usuario);
