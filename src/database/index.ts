@@ -3,11 +3,11 @@ import Usuario from '../models/Usuario';
 
 export const AppDataSource = new DataSource({
 	type: 'postgres',
-	host: 'localhost',
-	port: 5432,
-	username: 'postgres',
-	password: 'postgres',
-	database: 'sinmos',
+	host: process.env.HOST,
+	port: Number.parseInt(process.env.PORT + ''),
+	username: process.env.USERNAME,
+	password: process.env.PASSWORD,
+	database: process.env.DATABASE,
 	entities: ['./../models/*.ts', Usuario],
 	synchronize: false,
 	logging: false,
