@@ -1,7 +1,4 @@
 import { Request, Response } from 'express';
-import { AppDataSource } from '../database';
-import Cargo from '../models/Cargo';
-import Permissao from '../models/Permissao';
 import { In } from 'typeorm';
 
 import { cargoRepository } from '../repositories/CargoRepository';

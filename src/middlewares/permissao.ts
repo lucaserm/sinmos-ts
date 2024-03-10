@@ -13,7 +13,7 @@ async function decoder(request: Request): Promise<Usuario | null> {
 
 	const usuario = await usuarioRepository.findOne({
 		where: { id: payload?.sub?.toString() },
-		relations: ['roles'],
+		relations: ['cargos'],
 	});
 
 	return usuario;
@@ -32,10 +32,12 @@ function is(cargos: String[]) {
 
 		if (existeCargo) {
 			next();
+		} else {
+			return response.render('auth/auth-401');
 		}
-
-		return response
-			.status(401)
-			.send({ error: 'Não tem permissão para acessar esse recurso.' });
 	};
+
+	return roleAuthorized;
 }
+
+export { is };

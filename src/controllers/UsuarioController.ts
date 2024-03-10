@@ -1,14 +1,20 @@
 import { Request, Response } from 'express';
-import { AppDataSource } from '../database';
 
 import { hash } from 'bcryptjs';
-import Cargo from '../models/Cargo';
 import { In } from 'typeorm';
 
 import { cargoRepository } from '../repositories/CargoRepository';
 import { usuarioRepository } from '../repositories/UsuarioRepository';
+import Cargo from '../models/Cargo';
 
 class UsuarioController {
+	async read(request: Request, response: Response) {
+		const usuarios = await usuarioRepository.find({
+			relations: { cargos: true },
+		});
+		return response.status(201).json(usuarios);
+	}
+
 	async create(request: Request, response: Response) {
 		const { nome, senha, codigo, cargos } = request.body;
 

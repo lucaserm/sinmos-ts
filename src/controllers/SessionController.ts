@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-import { AppDataSource } from '../database';
-import Usuario from '../models/Usuario';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { usuarioRepository } from '../repositories/UsuarioRepository';
@@ -33,6 +31,8 @@ class SessionController {
 			subject: usuario.id,
 			expiresIn: '1d',
 		});
+
+		delete usuario.senha;
 
 		return response.json({
 			token,

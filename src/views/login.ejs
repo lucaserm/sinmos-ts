@@ -1,0 +1,49 @@
+<%- include('includes/head') %> <%- include('includes/nav') %>
+<div class="first_part">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 my-3">
+        <h1 class="text-center">SINMOS</h1>
+        <p class="text-center lead">Faça o login abaixo.</p>
+        <div class="alert alert-danger alert-dismissible fade show" style="display: none;" id="message" role="alert">
+          <p id=""></p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="form" action="/sessions" method="post" enctype="application/x-www-form-urlencoded" >
+          <div class="form-group">
+            <label>Código do Servidor</label>
+            <input
+              type="text"
+              class="form-control input"
+              id="codigo"
+              placeholder="CÓDIGO"
+              autocomplete="off"
+            />
+            <label>Senha</label>
+            <input
+              type="password"
+              class="form-control input"
+              id="senha"
+              placeholder="SENHA"
+            />
+          </div>
+          <div class="form-group">
+            <a href="/"
+              ><p class="text-left lead small">Esqueci minha senha</p></a
+            >
+          </div>
+          <button type="submit" class="btn button btn-success login__button">
+            Log-in
+          </button>
+        </form>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/assets/js/index.js"></script>
+<%- include('includes/footer') %>
