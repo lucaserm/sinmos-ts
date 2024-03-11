@@ -11,6 +11,7 @@ class SessionController {
 			where: {
 				codigo,
 			},
+			relations: ['cargos'],
 		});
 
 		if (!usuario) {
@@ -41,7 +42,12 @@ class SessionController {
 			sameSite: 'strict',
 		});
 
-		return response.redirect('/index');
+		const cargo = usuario.cargo.nome
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase();
+
+		return response.redirect(`/${cargo}/index`);
 	}
 }
 

@@ -1,6 +1,5 @@
 import { DataSource } from 'typeorm';
 import Usuario from '../models/Usuario';
-import Permissao from '../models/Permissao';
 import Cargo from '../models/Cargo';
 
 export const AppDataSource = new DataSource({
@@ -10,7 +9,7 @@ export const AppDataSource = new DataSource({
 	username: 'postgres',
 	password: 'postgres',
 	database: 'sinmos',
-	entities: ['./../models/*.ts', Usuario, Permissao, Cargo],
+	entities: ['./../models/*.ts', Usuario, Cargo],
 	synchronize: true,
 	logging: false,
 	migrations: ['./src/database/migrations/*.ts'],

@@ -3,6 +3,7 @@ import {
 	Entity,
 	JoinTable,
 	ManyToMany,
+	ManyToOne,
 	PrimaryGeneratedColumn,
 } from 'typeorm';
 import Cargo from './Cargo';
@@ -21,13 +22,8 @@ class Usuario {
 	@Column()
 	codigo: string;
 
-	@ManyToMany(() => Cargo)
-	@JoinTable({
-		name: 'UsuariosCargos',
-		joinColumns: [{ name: 'id_cargo' }],
-		inverseJoinColumns: [{ name: 'id_usuario' }],
-	})
-	cargos: Cargo[];
+	@ManyToOne(() => Cargo, (cargo) => cargo.usuarios)
+	cargo: Cargo | null;
 }
 
 export default Usuario;

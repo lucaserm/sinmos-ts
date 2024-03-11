@@ -11,7 +11,8 @@ class PublicController {
 	}
 
 	logout(request: Request, response: Response) {
-		response.render('login');
+		delete request.cookies.token;
+		response.redirect('/login');
 	}
 }
 

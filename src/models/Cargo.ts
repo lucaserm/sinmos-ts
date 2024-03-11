@@ -1,11 +1,5 @@
-import {
-	Column,
-	Entity,
-	JoinTable,
-	ManyToMany,
-	PrimaryGeneratedColumn,
-} from 'typeorm';
-import Permission from './Permissao';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import Usuario from './Usuario';
 @Entity('Cargos')
 class Cargo {
 	@PrimaryGeneratedColumn('uuid')
@@ -17,13 +11,8 @@ class Cargo {
 	@Column()
 	descricao: string;
 
-	@ManyToMany(() => Permission)
-	@JoinTable({
-		name: 'PermissoesCargos',
-		joinColumns: [{ name: 'id_cargo' }],
-		inverseJoinColumns: [{ name: 'id_permissao' }],
-	})
-	permissoes: Permission[];
+	@OneToMany(() => Usuario, (usuario) => usuario.cargo)
+	usuarios: Usuario[];
 }
 
 export default Cargo;

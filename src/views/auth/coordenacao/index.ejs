@@ -1,0 +1,55 @@
+<%- include('../../includes/head') %> <%- include('../../includes/nav') %>
+<div class="first_part">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 my-3">
+        <hr style="background-color: #fff; margin: 1rem" />
+        <h1 class="text-center">Coordenação</h1>
+        <form class= "form"action="/administracao/horarios" method="POST">
+          <p class="text-center lead">
+            Insira o RA do aluno para ver todos os dados
+          </p>
+          <input
+            type="text"
+            class="form-control"
+            name="ra"
+            autocomplete="off"
+            placeholder="RA"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="cpf"
+            autocomplete="off"
+            placeholder="CPF"
+            onchange="formataCPF(this)"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="nome"
+            autocomplete="off"
+            placeholder="NOME COMPLETO"
+          />
+          <br/>
+          <button class="btn btn-success form-control">Ver</button>
+        </form>
+        <hr style="margin: 1rem" />
+        <p class="text-center lead">
+          Ocorrências Pendentes, Aprovadas ou Reprovadas
+        </p>
+        <a href="/administraco/advertencias" class="btn button btn-info form-control">Ver</a>
+        <hr style="margin: 1rem" />
+        <p class="text-center lead">Cadastros Gerais</p>
+        <a href="/cadastro" class="btn button btn-info form-control">Ver</a>
+        <hr style="background-color: #fff; margin: 1rem" />
+        <form action="/">
+          <button class="btn button btn-dark form-control">Voltar</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<%- include('../../includes/footer');%>

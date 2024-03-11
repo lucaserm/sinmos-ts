@@ -26,13 +26,7 @@ function is(cargos: String[]) {
 	) => {
 		const usuario = await decoder(request);
 
-		const usuarioCargos = usuario?.cargos.map((cargo) => cargo.nome);
-
-		const existeCargo = usuarioCargos?.some((c) => cargos.includes(c));
-
-		console.log(cargos);
-		console.log(usuario?.cargos);
-		console.log(existeCargo);
+		const existeCargo = cargos.includes(usuario?.cargo?.nome + '');
 
 		if (existeCargo) {
 			next();
