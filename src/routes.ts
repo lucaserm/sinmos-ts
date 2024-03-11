@@ -10,10 +10,11 @@ import PublicController from './controllers/PublicController';
 const router = Router();
 
 //Rotas Públicas
-router.get('/', is(['Portaria']), PublicController.index); //Página Inicial
-router.get('/login', is([]), PublicController.login);
+router.get('/', PublicController.index); //Página Inicial
+router.get('/login', PublicController.login);
+router.get('/logout', PublicController.logout);
 
-router.get('/usuarios', UsuarioController.read);
+router.get('/usuarios', is(['Coordenação']), UsuarioController.read);
 
 router.post('/usuarios', UsuarioController.create);
 router.post('/sessions', SessionController.create);

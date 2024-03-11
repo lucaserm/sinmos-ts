@@ -6,6 +6,7 @@ class PublicController {
 	}
 
 	login(request: Request, response: Response) {
+		// response.setHeader('Content-Type', 'application/json');
 		response.render('login');
 	}
 

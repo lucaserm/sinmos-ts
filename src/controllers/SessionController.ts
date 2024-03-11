@@ -29,15 +29,19 @@ class SessionController {
 
 		const token = sign({}, hash_token, {
 			subject: usuario.id,
-			expiresIn: '1d',
+			expiresIn: 30,
 		});
 
 		delete usuario.senha;
 
-		return response.json({
-			token,
-			usuario,
+		response.cookie('token', token, {
+			maxAge: 1800000,
+			expires: new Date(Date.now() + 1800000),
+			httpOnly: true,
+			sameSite: 'strict',
 		});
+
+		return response.redirect('/index');
 	}
 }
 

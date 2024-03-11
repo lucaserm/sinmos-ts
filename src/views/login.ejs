@@ -12,13 +12,13 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="form" action="/sessions" method="post" enctype="application/x-www-form-urlencoded" >
+        <form id="for" action="/sessions" method="post">
           <div class="form-group">
             <label>Código do Servidor</label>
             <input
               type="text"
               class="form-control input"
-              id="codigo"
+              name="codigo"
               placeholder="CÓDIGO"
               autocomplete="off"
             />
@@ -26,7 +26,7 @@
             <input
               type="password"
               class="form-control input"
-              id="senha"
+              name="senha"
               placeholder="SENHA"
             />
           </div>
@@ -45,5 +45,4 @@
   </div>
 </div>
 
-<script type="module" src="/assets/js/index.js"></script>
 <%- include('includes/footer') %>
