@@ -11,19 +11,21 @@ class SessionController {
 			where: {
 				codigo,
 			},
-			relations: ['cargos'],
+			relations: ['cargo'],
 		});
 
 		if (!usuario) {
-			return response.status(401).json({ error: 'Usuário não encontrado.' });
+			return response.render('login', {
+				error: true,
+			});
 		}
 
 		const matchPassword = await compare(senha, usuario.senha || '');
 
 		if (!matchPassword) {
-			return response
-				.status(401)
-				.json({ error: 'Usuário ou senha incorretos. Tente novamente.' });
+			return response.render('login', {
+				error: true,
+			});
 		}
 
 		const hash_token: string = process.env.HASH_TOKEN + '';
@@ -42,7 +44,7 @@ class SessionController {
 			sameSite: 'strict',
 		});
 
-		const cargo = usuario.cargo.nome
+		const cargo = usuario?.cargo?.nome
 			.normalize('NFD')
 			.replace(/[\u0300-\u036f]/g, '')
 			.toLowerCase();

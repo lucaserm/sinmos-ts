@@ -1,11 +1,4 @@
-import {
-	Column,
-	Entity,
-	JoinTable,
-	ManyToMany,
-	ManyToOne,
-	PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import Cargo from './Cargo';
 
 @Entity('Usuarios')

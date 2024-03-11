@@ -7,7 +7,7 @@ class PublicController {
 
 	login(request: Request, response: Response) {
 		// response.setHeader('Content-Type', 'application/json');
-		response.render('login');
+		response.render('login', { error: false });
 	}
 
 	logout(request: Request, response: Response) {

@@ -33,7 +33,7 @@ class UsuarioController {
 
 		const existeCargo = await cargoRepository.findOne({
 			where: {
-				id: In(cargo),
+				id: cargo,
 			},
 		});
 
@@ -71,7 +71,7 @@ class UsuarioController {
 
 		const existeCargo = await cargoRepository.findOne({
 			where: {
-				id: In(cargo),
+				id: cargo,
 			},
 		});
 

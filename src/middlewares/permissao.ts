@@ -13,7 +13,7 @@ async function decoder(request: Request): Promise<Usuario | null> {
 
 	const usuario = await usuarioRepository.findOne({
 		where: { id: payload?.sub?.toString() },
-		relations: ['cargos'],
+		relations: ['cargo'],
 	});
 
 	return usuario;
